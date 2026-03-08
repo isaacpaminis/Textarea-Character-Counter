@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Textarea Character Counter</title>
+
+    <style>
+
+        .Container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            top: 100px;
+           color: blue;
+        }
+        textarea {
+            width: 500px;
+            height: 120px;
+        }
+
+        .box {
+            width: 500px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        #error {
+            color: red;
+            display: none;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div class="Container">
+    <h1>Type your message here!!</h1>
+
+    <textarea id="message"></textarea>
+
+    <div class="box">
+        <p id="counter">0 / 200 characters</p>
+        <p id="error">Maximum Character = 200</p>
+    </div>
+</div>
+    <script>
+         //Selecting Ids
+        var textarea = document.getElementById("message");
+        var counter = document.getElementById("counter");
+        var error = document.getElementById("error");
+
+        textarea.addEventListener("input", function () {
+
+            var length = textarea.value.length;
+
+            counter.textContent = length + " / 200 characters";
+
+            if (length >= 200) {
+                textarea.value = textarea.value.substring(0, 200);
+                error.style.display = "block";
+            }
+            else {
+                error.style.display = "none";
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
